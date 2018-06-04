@@ -8,7 +8,7 @@ using System.Linq;
 namespace CodeElements.BizRunner
 {
     /// <summary>
-    /// This abstract class provides all various features for error reporting and oher status items
+    ///     This abstract class provides all various features for error reporting and oher status items
     /// </summary>
     [DebuggerDisplay("Message = {Message}")]
     public abstract class BizActionStatus : IBizActionStatus
@@ -17,18 +17,18 @@ namespace CodeElements.BizRunner
         private string _successMessage;
 
         /// <summary>
-        /// This holds the list of ValidationResult errors. If the collection is empty, then there were no errors
+        ///     This holds the list of ValidationResult errors. If the collection is empty, then there were no errors
         /// </summary>
         public IImmutableList<ValidationResult> Errors => _errors.ToImmutableList();
 
         /// <summary>
-        /// This is true if any errors have been reistered 
+        ///     This is true if any errors have been reistered
         /// </summary>
         public bool HasErrors => _errors.Any();
 
         /// <summary>
-        /// On success this returns the message as set by the business logic, or the default messages set by the BizRunner
-        /// If there are errors it contains the message "Failed with NN errors"
+        ///     On success this returns the message as set by the business logic, or the default messages set by the BizRunner
+        ///     If there are errors it contains the message "Failed with NN errors"
         /// </summary>
         public string Message
         {
@@ -39,7 +39,7 @@ namespace CodeElements.BizRunner
         }
 
         /// <summary>
-        /// This adds one error to the Errors collection
+        ///     This adds one error to the Errors collection
         /// </summary>
         /// <param name="errorMessage">The text of the error message</param>
         /// <param name="propertyNames">optional. A list of property names that this error applies to</param>
@@ -50,7 +50,7 @@ namespace CodeElements.BizRunner
         }
 
         /// <summary>
-        /// This adds one ValidationResult to the Errors collection
+        ///     This adds one ValidationResult to the Errors collection
         /// </summary>
         /// <param name="validationResult"></param>
         public void AddValidationResult(ValidationResult validationResult)
@@ -59,7 +59,7 @@ namespace CodeElements.BizRunner
         }
 
         /// <summary>
-        /// This appends a collection of ValidationResults to the Errors collection
+        ///     This appends a collection of ValidationResults to the Errors collection
         /// </summary>
         /// <param name="validationResults"></param>
         public void AddValidationResults(IEnumerable<ValidationResult> validationResults)
