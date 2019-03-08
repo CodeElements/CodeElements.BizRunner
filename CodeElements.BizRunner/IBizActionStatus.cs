@@ -46,6 +46,7 @@ namespace CodeElements.BizRunner
         {
             var result = await _action.BizActionAsync(input);
             await SaveChangedIfRequiredAndNoErrorsAsync(_context, _action); //this already checks for errors
+            
             if (_action.HasErrors)
                 return default;
 
@@ -140,7 +141,27 @@ namespace CodeElements.BizRunner
         {
             if (!bizStatus.HasErrors && RequireSaveChanges)
             {
-                await db.SaveChangesAsync().ConfigureAwait(false);
+                try
+                {
+                    await db.SaveChangesAsync().ConfigureAwait(false);
+                }
+                catch (Exception e)
+                {
+                    if (bizStatus is IHandleDbException handleDbExceptions)
+                    {
+                        try
+                        {
+                            await handleDbExceptions.HandleDbSaveException(e).ConfigureAwait(false);
+                        }
+                        catch (Exception e2)
+                        {
+                            throw new AggregateException(e, e2);
+                        }
+
+                        if (!bizStatus.HasErrors)
+                            throw;
+                    }
+                }
             }
         }
     }
