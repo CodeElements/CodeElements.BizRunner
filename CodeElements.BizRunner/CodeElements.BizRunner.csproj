@@ -1,7 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>Anapher</Authors>
+    <Owners>Anapher</Owners>
+    <Copyright>Copyright 2019 Vincent</Copyright>
+    <PackageProjectUrl>https://github.com/CodeElements/CodeElements.BizRunner</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/CodeElements/CodeElements.BizRunner.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>CodeElements.BizRunner provides basic interfaces to define business actions in a Domain Driven Design.</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
